@@ -100,7 +100,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             .addGap(0, 453, Short.MAX_VALUE)
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Algoritmo", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Algoritmo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel1.setText("Escoger");
@@ -131,7 +131,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modo", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 14))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 14))); // NOI18N
 
         Modo.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         Modo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciones una Alternativa", "Manual", "Aleatorio" }));
@@ -167,7 +167,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manual", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manual", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel3.setText("Punto");
@@ -233,7 +233,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton1))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aleatorio", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aleatorio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel6.setText("Puntos :");
@@ -272,7 +272,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Complejidad", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Complejidad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel7.setText("Tiempo : ");
@@ -284,7 +284,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
 
         tiempoProcesamiento.setEditable(false);
-        tiempoProcesamiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tiempoProcesamiento.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -308,14 +308,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tiempoProcesamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(25, 25, 25))
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
         PuntosIngresados.setEditable(false);
         PuntosIngresados.setColumns(20);
@@ -331,7 +331,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -356,7 +356,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jButton2.setText("Limpiar");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos Encontrados", 0, 0, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos Encontrados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel9.setText("Punto 1 : ");
@@ -376,23 +376,27 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel14.setText("Y :");
 
+        Punto1x.setEditable(false);
+
+        Punto1Y.setEditable(false);
+
+        Punto2x.setEditable(false);
+
+        Punto2y.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel10))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel9)))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -476,8 +480,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addComponent(pPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -494,10 +498,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -514,18 +519,18 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Funcion que nos permite dibujar los puntos sobre el JPanel
     private void dibujarPuntos(ArrayList <Logica.Point> puntos){
       //Draw Points from an ArrayList in the Panel pPrincipal  
         pto = pPrincipal.getGraphics();
         pto.setColor(Color.white);
         for(int i = 0; i < puntos.size(); i++){
-            
             pto.drawOval(puntos.get(i).getX(), puntos.get(i).getY(), 6, 6);
         }
     }
     
     private void ModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModoActionPerformed
-        // TODO add your handling code here:
+        // Condición para cuando se Algoritmo de Fuerza Bruta - Manual
         if(Modo.getSelectedIndex() == 1 && Algoritmo.getSelectedIndex()==1)
         {
             PuntosAleatorios.setEnabled(false);
@@ -552,7 +557,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void dibujarLineas(ArrayList <Logica.Point> puntos){
         line = pPrincipal.getGraphics();
         line.setColor(Color.white);
-        
+        Punto1x.setText(String.valueOf(puntos.get(0).getX()));
+        Punto2x.setText(String.valueOf(puntos.get(1).getX()));
         for(int i = 0; i < puntos.size();i++)
         {
             System.out.println(puntos.get(i).getX() +" , "+puntos.get(i).getY());
@@ -561,11 +567,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         {
             line.drawLine(puntos.get(i).getX(), puntos.get(i).getY(), puntos.get(i+1).getX(), puntos.get(i+1).getY());
         }
-        
-
-        
-    }
     
+    }  
     
     private void AplicarAlgoritmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarAlgoritmoActionPerformed
         // TODO add your handling code here:
@@ -592,7 +595,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_AplicarAlgoritmoActionPerformed
-private ArrayList<Logica.Point> generarManualPoints(int value){
+//Función para generar puntos aleatorios en 1Dimension
+    private ArrayList<Logica.Point> generarManualPoints(int value){
       //Generate Random Points in an ArrayList
         Random rm = new Random();
         double x, y;
