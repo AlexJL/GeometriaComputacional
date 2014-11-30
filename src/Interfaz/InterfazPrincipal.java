@@ -21,17 +21,24 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form InterfazPrincipal
      */
+    public int numOpera = 0;
     private Graphics pto,line;
     private ArrayList<Logica.Point> puntosPanel;
     private Logica.ParMasProximo pmp;
     private long time_start,time_end;
     boolean ver=true;
+    private Logica.ParMasProximo2D pmp2D;
    
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
         this.setResizable(false);
         puntosPanel = new ArrayList<Logica.Point>();
+        txt_x.setEnabled(false);
+        txt_y.setEnabled(false);
+        AdicionarPuntos.setEnabled(false);
+        PuntosAleatorios.setEnabled(false);
+        GenerarPuntosAleatorios.setEnabled(false);
     }
 
     /**
@@ -57,7 +64,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txt_x = new javax.swing.JTextField();
         txt_y = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        AdicionarPuntos = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         PuntosAleatorios = new javax.swing.JTextField();
@@ -65,14 +72,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        numeroOperaciones = new javax.swing.JTextField();
         tiempoProcesamiento = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PuntosIngresados = new javax.swing.JTextArea();
         jPanel9 = new Logica.JPanelConFondo("../img/untLogo.png");
         AplicarAlgoritmo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Limpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -134,7 +141,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 14))); // NOI18N
 
         Modo.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        Modo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecciones una Alternativa", "Manual", "Aleatorio" }));
+        Modo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una Alternativa", "Manual", "Aleatorio" }));
         Modo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModoActionPerformed(evt);
@@ -182,11 +189,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         txt_y.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        jButton1.setText("Adicionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AdicionarPuntos.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        AdicionarPuntos.setText("Adicionar");
+        AdicionarPuntos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AdicionarPuntosActionPerformed(evt);
             }
         });
 
@@ -199,7 +206,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jButton1)
+                        .addComponent(AdicionarPuntos)
                         .addGap(0, 55, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -230,7 +237,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txt_y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1))
+                .addComponent(AdicionarPuntos))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aleatorio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
@@ -242,6 +249,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         GenerarPuntosAleatorios.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         GenerarPuntosAleatorios.setText("Generar");
+        GenerarPuntosAleatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenerarPuntosAleatoriosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -280,8 +292,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel8.setText("Operaciones :");
 
-        jTextField4.setEditable(false);
-        jTextField4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        numeroOperaciones.setEditable(false);
+        numeroOperaciones.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
 
         tiempoProcesamiento.setEditable(false);
         tiempoProcesamiento.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
@@ -298,7 +310,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tiempoProcesamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numeroOperaciones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48))
         );
         jPanel7Layout.setVerticalGroup(
@@ -310,7 +322,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                     .addComponent(tiempoProcesamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numeroOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(25, 25, 25))
         );
@@ -342,7 +354,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 146, Short.MAX_VALUE)
+            .addGap(0, 155, Short.MAX_VALUE)
         );
 
         AplicarAlgoritmo.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
@@ -353,8 +365,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        jButton2.setText("Limpiar");
+        Limpiar.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puntos Encontrados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tempus Sans ITC", 1, 12))); // NOI18N
 
@@ -457,14 +474,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(7, 7, 7)
                         .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(AplicarAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(Limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -494,15 +511,16 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AplicarAlgoritmo)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(Limpiar))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -523,7 +541,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void dibujarPuntos(ArrayList <Logica.Point> puntos){
       //Draw Points from an ArrayList in the Panel pPrincipal  
         pto = pPrincipal.getGraphics();
-        pto.setColor(Color.white);
+        pto.setColor(Color.RED);
         for(int i = 0; i < puntos.size(); i++){
             pto.drawOval(puntos.get(i).getX(), puntos.get(i).getY(), 6, 6);
         }
@@ -536,11 +554,45 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             PuntosAleatorios.setEnabled(false);
             GenerarPuntosAleatorios.setEnabled(false);
             txt_y.setEnabled(false);
+            txt_x.setEnabled(true);
+            AdicionarPuntos.setEnabled(true);
+        }
+        if(Modo.getSelectedIndex() == 2 && Algoritmo.getSelectedIndex() == 1)
+        {
+            PuntosAleatorios.setEnabled(true);
+            GenerarPuntosAleatorios.setEnabled(true);
+            txt_y.setEnabled(false);
+            txt_x.setEnabled(false);
+            AdicionarPuntos.setEnabled(false);
+        }
+        if(Modo.getSelectedIndex() == 1 && Algoritmo.getSelectedIndex() == 2)
+        {
+            txt_x.setEnabled(true);
+            txt_y.setEnabled(true);
+            AdicionarPuntos.setEnabled(true);
+            PuntosAleatorios.setEnabled(false);
+            GenerarPuntosAleatorios.setEnabled(false);
+        }
+        if(Modo.getSelectedIndex() == 2 && Algoritmo.getSelectedIndex() == 2)
+        {
+            txt_x.setEnabled(false);
+            txt_y.setEnabled(false);
+            AdicionarPuntos.setEnabled(false);
+            PuntosAleatorios.setEnabled(true);
+            GenerarPuntosAleatorios.setEnabled(true);
         }
     }//GEN-LAST:event_ModoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AdicionarPuntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarPuntosActionPerformed
         // TODO add your handling code here:
+        if(Modo.getSelectedItem().equals("Seleccione una Alternativa"))
+        {
+            JOptionPane.showMessageDialog(this, "Debe Escoger un Modo");
+        }
+        if(Algoritmo.getSelectedItem().equals("Seleccione una Alternativa"))
+        {
+            JOptionPane.showMessageDialog(this, "DEbe escoger un Algoritmo");
+        }
         if(Modo.getSelectedIndex()==1 && Algoritmo.getSelectedIndex()==1)
         {
             if(txt_x.equals(""))
@@ -552,13 +604,26 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 dibujarPuntos(generarManualPoints(Integer.valueOf(1)));
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if(Modo.getSelectedIndex() ==1 && Algoritmo.getSelectedIndex()==2)
+        {
+            if(txt_x.equals(""))
+            {
+                JOptionPane.showMessageDialog(this, "Debe Ingresar la Coordenada x");
+            }
+            else
+            {
+                dibujarPuntos(generarManualPoints(Integer.valueOf(1)));
+            }
+        }
+    }//GEN-LAST:event_AdicionarPuntosActionPerformed
 
+    // Método para dibujar las linea que une los puntos
     private void dibujarLineas(ArrayList <Logica.Point> puntos){
         line = pPrincipal.getGraphics();
-        line.setColor(Color.white);
+        line.setColor(Color.BLUE);
         Punto1x.setText(String.valueOf(puntos.get(0).getX()));
         Punto2x.setText(String.valueOf(puntos.get(1).getX()));
+        numeroOperaciones.setText(String.valueOf(pmp.getCont()));
         for(int i = 0; i < puntos.size();i++)
         {
             System.out.println(puntos.get(i).getX() +" , "+puntos.get(i).getY());
@@ -592,16 +657,129 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Debe ingresar mas de dos puntos");
             }
         }
-        
-        
+        if(Modo.getSelectedIndex() == 2 && Algoritmo.getSelectedIndex() == 1)
+        {
+            try{
+                    colocarPuntos(puntosPanel);
+                    pmp = new Logica.ParMasProximo();
+                    time_start = System.currentTimeMillis();
+                    dibujarLineas(pmp.aplicarPMP(puntosPanel));
+                    time_end = System.currentTimeMillis();
+                    tiempoProcesamiento.setText(String.valueOf((time_end-time_start) + "ms"));
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Debe ingresar datos correctos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+        }
+        if(Modo.getSelectedIndex() == 1 && Algoritmo.getSelectedIndex() == 2)
+        {
+            try
+            {
+                colocarPuntos(puntosPanel);
+                pmp2D =  new Logica.ParMasProximo2D();
+                time_start = System.currentTimeMillis();
+                dibujarLineas1(pmp2D.aplicarPMP2D(puntosPanel));
+                time_end = System.currentTimeMillis();
+                tiempoProcesamiento.setText(String.valueOf((time_end - time_start) + " ms"));
+            }
+            catch(Exception ex)
+            {
+                
+            }
+        }
+        if(Modo.getSelectedIndex() == 2 && Algoritmo.getSelectedIndex() == 2)
+        {
+            try
+            {
+                colocarPuntos(puntosPanel);
+                pmp2D =  new Logica.ParMasProximo2D();
+                time_start = System.currentTimeMillis();
+                dibujarLineas1(pmp2D.aplicarPMP2D(puntosPanel));
+                time_end = System.currentTimeMillis();
+                tiempoProcesamiento.setText(String.valueOf((time_end - time_start) + " ms"));
+            }
+            catch(Exception ex)
+            {
+                
+            }
+        }
     }//GEN-LAST:event_AplicarAlgoritmoActionPerformed
+
+    private void reset(){
+    //Este método regresa el panel a su estado inicial
+        pPrincipal.removeAll();
+        revalidate();
+        pPrincipal.repaint();
+    }
+    
+    
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        // TODO add your handling code here:
+        reset();
+        puntosPanel.clear();
+        tiempoProcesamiento.setText("");
+        PuntosIngresados.setText("");
+        numeroOperaciones.setText("");
+        Punto1Y.setText("");
+        Punto1x.setText("");
+        Punto2x.setText("");
+        Punto2y.setText("");
+        PuntosAleatorios.setText("");
+        txt_x.setText("");
+        txt_y.setText("");
+    }//GEN-LAST:event_LimpiarActionPerformed
+
+    private ArrayList<Logica.Point> generarRandomPoints(int value){
+      //Generate Random Points in an ArrayList
+        Random rm = new Random();
+        puntosPanel = new ArrayList<Logica.Point>();
+        while( value != 0 ){
+        Logica.Point p = new Logica.Point(rm.nextInt(498), rm.nextInt(398));
+        // Logica.Point p = new Logica.Point((int)(rm.nextDouble()*400 + 20), (int)(rm.nextDouble()*400 + 20));
+        puntosPanel.add(p);
+            value--;
+        }
+        
+        
+        return puntosPanel;
+    }
+    
+    
+    private void GenerarPuntosAleatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPuntosAleatoriosActionPerformed
+        // TODO add your handling code here:
+        if(Modo.getSelectedIndex()== 2 && Algoritmo.getSelectedIndex() == 1)
+        {
+            try{
+            //reset();
+            dibujarPuntos(generarRandomPoints(Integer.valueOf(PuntosAleatorios.getText())));
+           }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error", "Error: Ingresar números enteros", JOptionPane.ERROR_MESSAGE);
+           }
+        }
+        if(Modo.getSelectedIndex() == 2 && Algoritmo.getSelectedIndex() == 2)
+        {
+            try{
+            //reset();
+            dibujarPuntos(generarRandomPoints(Integer.valueOf(PuntosAleatorios.getText())));
+           }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error", "Error: Ingresar números enteros", JOptionPane.ERROR_MESSAGE);
+           }
+        }
+        
+    }//GEN-LAST:event_GenerarPuntosAleatoriosActionPerformed
 //Función para generar puntos aleatorios en 1Dimension
     private ArrayList<Logica.Point> generarManualPoints(int value){
       //Generate Random Points in an ArrayList
         Random rm = new Random();
         double x, y;
         x = Double.parseDouble(txt_x.getText());
-        y = rm.nextInt(398);
+        if(Modo.getSelectedIndex() == 1&& Algoritmo.getSelectedIndex()==1)
+        {
+            y = rm.nextInt(398);
+        }
+        else
+        {
+            y = Double.parseDouble(txt_y.getText());
+        }
         
         while( value != 0 ){
             
@@ -609,25 +787,18 @@ public class InterfazPrincipal extends javax.swing.JFrame {
            // Logica.Point p = new Logica.Point((int)(rm.nextDouble()*400 + 20), (int)(rm.nextDouble()*400 + 20));
             puntosPanel.add(p);
             txt_x.setText("");
-            //txt_y.setText("");
+            txt_y.setText("");
             value--;
         }
         return puntosPanel;
     } 
     
-  
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AdicionarPuntos;
     private javax.swing.JComboBox Algoritmo;
     private javax.swing.JButton AplicarAlgoritmo;
     private javax.swing.JButton GenerarPuntosAleatorios;
+    private javax.swing.JButton Limpiar;
     private javax.swing.JComboBox Modo;
     private javax.swing.JTextField Punto1Y;
     private javax.swing.JTextField Punto1x;
@@ -635,8 +806,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField Punto2y;
     private javax.swing.JTextField PuntosAleatorios;
     private javax.swing.JTextArea PuntosIngresados;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -661,7 +830,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField numeroOperaciones;
     private javax.swing.JPanel pPrincipal;
     private javax.swing.JTextField tiempoProcesamiento;
     private javax.swing.JTextField txt_x;
@@ -669,8 +838,33 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void colocarPuntos(ArrayList<Point> puntosPanel) {
-        for (int i = 0; i < puntosPanel.size(); i++) {
-            PuntosIngresados.append("Punto ["+i+"]: X = "+puntosPanel.get(i).getX()+"\n");
+        if((Modo.getSelectedIndex() == 1 && Algoritmo.getSelectedIndex() == 1) ||
+               ( Modo.getSelectedIndex() == 2 && Algoritmo.getSelectedIndex() == 1))
+        {
+            for (int i = 0; i < puntosPanel.size(); i++) {
+                PuntosIngresados.append("Punto ["+i+"]: X = "+puntosPanel.get(i).getX()+"\n");
+            }
+        }
+        else
+        {
+            for (int i = 0; i < puntosPanel.size(); i++) {
+                PuntosIngresados.append("Punto ["+i+"]: X = "+puntosPanel.get(i).getX()+
+                        ", Y = "+puntosPanel.get(i).getY()+"\n");
+            }
+        }
+    }
+
+    private void dibujarLineas1(ArrayList<Point> puntos) {
+         line = pPrincipal.getGraphics();
+        line.setColor(Color.BLUE);
+        Punto1x.setText(String.valueOf(puntos.get(0).getX()));
+        Punto1Y.setText(String.valueOf(puntos.get(0).getY()));
+        Punto2x.setText(String.valueOf(puntos.get(1).getX()));
+        Punto2y.setText(String.valueOf(puntos.get(1).getY()));
+        numeroOperaciones.setText(String.valueOf(pmp2D.getCont()));
+        for(int i = 0; i < puntos.size() - 1; i++)
+        {
+            line.drawLine(puntos.get(i).getX(), puntos.get(i).getY(), puntos.get(i+1).getX(), puntos.get(i+1).getY());
         }
     }
 }
