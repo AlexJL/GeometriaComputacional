@@ -7,6 +7,7 @@ package Interfaz;
 
 
 import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -239,7 +240,7 @@ public class Inicio extends javax.swing.JFrame {
  public static void main(String args[]) {
 
             try{
-            UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
+            UIManager.setLookAndFeel(new SyntheticaBlueMoonLookAndFeel());
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "error Look and feel"+e.getMessage());
