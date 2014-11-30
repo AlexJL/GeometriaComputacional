@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import Interfaz.InterfazPrincipal;
 import java.util.ArrayList;
 
 /**
@@ -13,15 +14,16 @@ import java.util.ArrayList;
  */
 public class ParMasProximo {
     Point p1v,p2v;
+    private int cont = 0;
     public ArrayList <Logica.Point> aplicarPMP(ArrayList <Logica.Point> vpoints){
         ArrayList <Logica.Point> res = new ArrayList<Logica.Point>(); 
         int distancia =100;
-        int p1x,p2x,p1y,p2y;
+        int p1x,p2x,p1y,p2y,i,j = 0;
         //p1v;
         //Point p2v;
-        for(int i = 0;i < vpoints.size();i++)
+        for(i = 0;i < vpoints.size();i++)
         {
-            for(int j = i+1; j < vpoints.size()-1;j++)
+            for(j = i+1; j < vpoints.size()-1;j++)
             {
                 Point p1 = vpoints.get(i);
                 Point p2 = vpoints.get(j);
@@ -38,8 +40,17 @@ public class ParMasProximo {
                 }
             }
         }
+        cont = i*j;
         res.add(p1v);
         res.add(p2v);
         return res;
+    }
+
+    public int getCont() {
+        return cont;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
     }
 }
